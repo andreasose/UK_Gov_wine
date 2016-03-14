@@ -4,7 +4,7 @@ author: "Andreas Ose"
 date: "11 March 2016"
 output: html_document
 ---
-    ```{r}
+```{r}
 library(ggplot2)
 wine_list <- read.csv("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/445777/Annex_B_-_Wine_Cellar_Stock-list_data_07_07_15.csv")
 wine_data <- read.csv("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/445411/Wine_Cellar_Consumption_dataset_14-15.csv")
@@ -19,10 +19,3 @@ p + geom_point()+ geom_jitter()
 
 ```
 
-You can also embed plots, for example:
-    
-    ```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
