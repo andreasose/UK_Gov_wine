@@ -1,0 +1,28 @@
+---
+title: "Analysing the UK Gov Wine Cellar"
+author: "Andreas Ose"
+date: "11 March 2016"
+output: html_document
+---
+    ```{r}
+library(ggplot2)
+wine_list <- read.csv("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/445777/Annex_B_-_Wine_Cellar_Stock-list_data_07_07_15.csv")
+wine_data <- read.csv("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/445411/Wine_Cellar_Consumption_dataset_14-15.csv")
+
+#Let's take a quick look at the different regions the government has acces to:
+table(factor(wine_data$Country.Region))
+#seems like sampling different Bordeaux bottles is very popular. Expensive stuff
+wine_data$Consumption.April.2014...March.2015 <- as.numeric(as.character(wine_data$Consumption.April.2014...March.2015))
+wine_data <- wine_data[wine_data$Consumption.April.2014...March.2015 >= 0, ]
+p <- ggplot(wine_data, aes(Vintage, Consumption.April.2014...March.2015, color= Country.Region))
+p + geom_point()+ geom_jitter()
+
+```
+
+You can also embed plots, for example:
+    
+    ```{r, echo=FALSE}
+plot(cars)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
